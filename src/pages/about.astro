@@ -1,4 +1,5 @@
 ---
+import "../styles/global.css";
 const pageTitle = "About Me";
 
 const identity = {
@@ -12,6 +13,9 @@ const skills = ["HTML", "CSS", "JavaScript", "Python", "Astro", "Svelte"];
 const happy = true;
 const finished = false;
 const goal = 3;
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
 
 <html lang="en">
@@ -21,6 +25,17 @@ const goal = 3;
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>{pageTitle}</title>
+        <style define:vars={{ skillColor, fontWeight, textCase }}>
+            h1 {
+                color: purple;
+                font-size: 4rem;
+            }
+            .skill {
+                color: var(--skillColor);
+                font-weight: var(--fontWeight);
+                text-transform: var(--textCase);
+            }
+        </style>
     </head>
     <body>
         <a href="/">Home</a>
@@ -36,15 +51,25 @@ const goal = 3;
             <li>I currently reside in {identity.country} unfortunately</li>
             <li>I'm a {identity.occupation}</li>
             {
-                identity.hobbies.length >= 2 && 
-                    <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]} </li>     
+                identity.hobbies.length >= 2 && (
+                    <li>
+                        Two of my hobbies are: {identity.hobbies[0]} and{" "}
+                        {identity.hobbies[1]}{" "}
+                    </li>
+                )
             }
         </ul>
         <ul>
-            {skills.map((skill) => <li>{skill}</li>)}
+            {skills.map((skill) => <li class="skill">{skill}</li>)}
         </ul>
         {happy && <p>I am a god at Astro.</p>}
         {finished && <p>I might be egoistical</p>}
-        {goal === 3 ? <p>My goal is to finish in 3 seconds</p>: <p>My goal is to finish you in 3 seconds.</p>}
+        {
+            goal === 3 ? (
+                <p>My goal is to finish in 3 seconds</p>
+            ) : (
+                <p>My goal is to finish you in 3 seconds.</p>
+            )
+        }
     </body>
 </html>

@@ -1,5 +1,6 @@
 ---
-import Navigation from "../components/Navigation.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 const pageTitle = "Blog";
 import "../styles/global.css";
 ---
@@ -13,7 +14,7 @@ import "../styles/global.css";
         <title>{pageTitle}</title>
     </head>
     <body>
-        <Navigation />
+        <Header />
         <h1>This is my {pageTitle} ig</h1>
         <p>Im gonna be blogging cuz im awesome like that.</p>
         <p>Idk what to put, pls help.</p>
@@ -22,5 +23,9 @@ import "../styles/global.css";
             <li><a href="/posts/post-2/">Post 2</a></li>
             <li><a href="/posts/post-3/">Post 3</a></li>
         </ul>
+        <Footer />
+        <script>
+            import "../scripts/menu.js";
+        </script>
     </body>
 </html>

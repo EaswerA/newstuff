@@ -1,6 +1,7 @@
 ---
+layout: ../../layouts/MarkdownPostLayout.astro
 title: My Third Blog Post
-author: Astro Learner
+author: Easwer
 description: "I had some challenges, but asking in the community really helped!"
 image:
     url: "https://docs.astro.build/assets/rays.webp"
@@ -9,5 +10,3 @@ pubDate: 2022-07-15
 tags: ["astro", "learning in public", "setbacks", "community"]
 ---
 Im breezing past this bitch and I love building with Astro. And, the [Discord community](https://astro.build/chat) is really friendly and helpful (unlike the rest of discord) !
-
-[back](/blog/)

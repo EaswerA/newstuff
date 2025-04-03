@@ -1,6 +1,7 @@
 ---
+layout: ../../layouts/MarkdownPostLayout.astro
 title: My Second Blog Post
-author: Astro Learner
+author: Easwer
 description: "After learning some Astro, I couldn't stop!"
 image:
     url: "https://docs.astro.build/assets/arc.webp"
@@ -15,5 +16,3 @@ After a successful first week of trying new shit in Astro, I decided to try some
 1. kejnfkew
 2. ewjnwef
 3. ksjdv
-
-[back](/blog/)

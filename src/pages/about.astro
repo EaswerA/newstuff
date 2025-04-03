@@ -1,7 +1,5 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
 const pageTitle = "About Me";
 
 const identity = {
@@ -27,7 +25,9 @@ const textCase = "uppercase";
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>{pageTitle}</title>
-        <style define:vars={{ skillColor, fontWeight, textCase }}>
+    </head>
+    <body>
+        <style is:global define:vars={{ skillColor, fontWeight, textCase }}>
             h1 {
                 color: purple;
                 font-size: 4rem;
@@ -38,42 +38,35 @@ const textCase = "uppercase";
                 text-transform: var(--textCase);
             }
         </style>
-    </head>
-    <body>
-        <Header />
-        <h1>{pageTitle}</h1>
-        <h2>... and this cool shi Im making</h2>
-        <p>Astro documentation is awesome y'all check this shit out fr.</p>
-        <p>This site will get better as I lock in more so les fuckin go.</p>
-        <p>Heres some info on me, you lil stalker</p>
-        <ul>
-            <li>My name is {identity.firstName}</li>
-            <li>I currently reside in {identity.country} unfortunately</li>
-            <li>I'm a {identity.occupation}</li>
+        <BaseLayout pageTitle={pageTitle}>
+            <p>Astro documentation is awesome y'all check this shit out fr.</p>
+            <p>This site will get better as I lock in more so les fuckin go.</p>
+            <p>Heres some info on me, you lil stalker</p>
+            <ul>
+                <li>My name is {identity.firstName}</li>
+                <li>I currently reside in {identity.country} unfortunately</li>
+                <li>I'm a {identity.occupation}</li>
+                {
+                    identity.hobbies.length >= 2 && (
+                        <li>
+                            Two of my hobbies are: {identity.hobbies[0]} and{" "}
+                            {identity.hobbies[1]}{" "}
+                        </li>
+                    )
+                }
+            </ul>
+            <ul>
+                {skills.map((skill) => <li class="skill">{skill}</li>)}
+            </ul>
+            {happy && <p>I am a god at Astro.</p>}
+            {finished && <p>I might be egoistical</p>}
             {
-                identity.hobbies.length >= 2 && (
-                    <li>
-                        Two of my hobbies are: {identity.hobbies[0]} and{" "}
-                        {identity.hobbies[1]}{" "}
-                    </li>
+                goal === 3 ? (
+                    <p>My goal is to finish in 3 seconds</p>
+                ) : (
+                    <p>My goal is to finish you in 3 seconds.</p>
                 )
             }
-        </ul>
-        <ul>
-            {skills.map((skill) => <li class="skill">{skill}</li>)}
-        </ul>
-        {happy && <p>I am a god at Astro.</p>}
-        {finished && <p>I might be egoistical</p>}
-        {
-            goal === 3 ? (
-                <p>My goal is to finish in 3 seconds</p>
-            ) : (
-                <p>My goal is to finish you in 3 seconds.</p>
-            )
-        }
-        <Footer />
-        <script>
-            import "../scripts/menu.js";
-        </script>
+        </BaseLayout>
     </body>
 </html>
